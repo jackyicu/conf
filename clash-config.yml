@@ -546,3 +546,4 @@ Rule:
 # 最终规则
 - GEOIP,CN,DIRECT
 - MATCH,Proxy
+- FINAL,,Proxy
