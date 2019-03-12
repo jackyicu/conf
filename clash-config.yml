@@ -42,8 +42,8 @@ Proxy:
 # vmess
 # 支持加密方式：auto / aes-128-gcm / chacha20-poly1305 / none
 # - { name: "vmess1", type: vmess, server: server, port: 443, uuid: uuid, alterId: 32, cipher: auto }
-- { name: "sg", type: vmess, server: sg.somespaces.cf, port: 443, uuid: 39e84111-8026-8f7e-af68-807542af44c5, alterId: 64, cipher: auto, tls: true }
-- { name: "jp", type: vmess, server: fw.somespaces.cf, port: 443, uuid: 39e84111-8026-8f7e-af68-807542af44c5, alterId: 64, cipher: auto, tls: true }
+- { name: "tls-sg", type: vmess, server: sg.somespaces.cf, port: 443, uuid: 39e84111-8026-8f7e-af68-807542af44c5, alterId: 64, cipher: auto, tls: true }
+- { name: "tls-jp", type: vmess, server: fw.somespaces.cf, port: 443, uuid: 39e84111-8026-8f7e-af68-807542af44c5, alterId: 64, cipher: auto, tls: true }
 # socks5
 # - { name: "socks", type: socks5, server: server, port: 443 }
 
@@ -57,7 +57,7 @@ Proxy Group:
 # select 用来允许用户手动选择 代理服务器 或 服务器组
 # 您也可以使用 RESTful API 去切换服务器，这种方式推荐在 GUI 中使用
 # - { name: "Proxy", type: select, proxies: ["ss1", "ss2", "vmess1", "auto"] }
-- { name: "Proxy", type: select, proxies: ["sv","sg","jp"] }
+- { name: "Proxy", type: select, proxies: ["sv","tls-sg","tls-jp"] }
 
 Rule:
 # Apple 服务优化
