@@ -36,14 +36,16 @@ Proxy:
 # 支持加密方式： AEAD_AES_128_GCM AEAD_AES_192_GCM AEAD_AES_256_GCM AEAD_CHACHA20_POLY1305 AES-128-CTR AES-192-CTR AES-256-CTR AES-128-CFB AES-192-CFB AES-256-CFB CHACHA20-IETF XCHACHA20
 # clash 额外支持 chacha20 rc4-md5 xchacha20-ietf-poly1305 加密方式
 
-- { name: "sv", type: ss, server: 149.28.208.185, port: 17477, cipher: AEAD_CHACHA20_POLY1305, password: "lfh9nBUlRHC7" }
+#- { name: "sv", type: ss, server: 149.28.208.185, port: 17477, cipher: AEAD_CHACHA20_POLY1305, password: "lfh9nBUlRHC7" }
 # - { name: "ss2", type: ss, server: server, port: 443, cipher: AEAD_CHACHA20_POLY1305, password: "password", obfs: tls, obfs-host: bing.com }
 
 # vmess
 # 支持加密方式：auto / aes-128-gcm / chacha20-poly1305 / none
 # - { name: "vmess1", type: vmess, server: server, port: 443, uuid: uuid, alterId: 32, cipher: auto }
-- { name: "tls-sg", type: vmess, server: sg.somespaces.cf, port: 443, uuid: 39e84111-8026-8f7e-af68-807542af44c5, alterId: 64, cipher: auto, tls: true }
-- { name: "tls-jp", type: vmess, server: fw.somespaces.cf, port: 443, uuid: 39e84111-8026-8f7e-af68-807542af44c5, alterId: 64, cipher: auto, tls: true }
+- { name: "tls-sg", type: vmess, server: "sg.somespaces.cf", port: 443, uuid: "39e84111-8026-8f7e-af68-807542af44c5", alterId: 64, cipher: auto, tls: true }
+- { name: "tls-jp", type: vmess, server: "fw.somespaces.cf", port: 443, uuid: "39e84111-8026-8f7e-af68-807542af44c5", alterId: 64, cipher: auto, tls: true }
+- { name: "tls-us", type: vmess, server: "somespaces.cf", port: 443, uuid: "c8de1bdc-1496-f121-6cdb-8ebbc6c08e91", alterId: 64, cipher: auto, tls: true }
+
 # socks5
 # - { name: "socks", type: socks5, server: server, port: 443 }
 
@@ -57,7 +59,7 @@ Proxy Group:
 # select 用来允许用户手动选择 代理服务器 或 服务器组
 # 您也可以使用 RESTful API 去切换服务器，这种方式推荐在 GUI 中使用
 # - { name: "Proxy", type: select, proxies: ["ss1", "ss2", "vmess1", "auto"] }
-- { name: "Proxy", type: select, proxies: ["sv","tls-sg","tls-jp"] }
+- { name: "Proxy", type: select, proxies: ["tls-us","tls-sg","tls-jp"] }
 
 Rule:
 # Apple 服务优化
